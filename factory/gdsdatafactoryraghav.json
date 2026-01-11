@@ -1,0 +1,9 @@
+{
+	"name": "gdsdatafactoryraghav",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3a5d6cd0-93af-4d5b-a108-c30ab705e0a6",
+		"tenantId": "8e3203ef-92cb-4584-a83d-42e6efabadfb"
+	}
+}
