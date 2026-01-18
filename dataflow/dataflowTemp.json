@@ -34,7 +34,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceSales",
-				"sourceSales filter(ERROR_FUNCTION('')) ~> filter"
+				"sourceSales filter(SALES>=2000) ~> filter"
 			]
 		}
 	}
