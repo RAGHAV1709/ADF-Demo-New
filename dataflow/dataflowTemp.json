@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "SnowflakeTable",
+						"type": "DatasetReference"
+					},
 					"name": "sink"
 				}
 			],
@@ -47,8 +51,19 @@
 				"     TOTALSALES = sum(SALES)) ~> aggregate",
 				"aggregate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          YEAR_ID as decimal(38,0),",
+				"          MONTH_ID as decimal(38,0),",
+				"          TOTALSALES as decimal(18,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink"
+				"     skipDuplicateMapOutputs: true,",
+				"     stageInsert: true) ~> sink"
 			]
 		}
 	}
