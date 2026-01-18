@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "filter"
+				},
+				{
+					"name": "aggregate"
 				}
 			],
 			"scriptLines": [
@@ -34,7 +37,10 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> sourceSales",
-				"sourceSales filter(SALES>=2000) ~> filter"
+				"sourceSales filter(SALES>=2000) ~> filter",
+				"filter aggregate(groupBy(YEAR_ID,",
+				"          MONTH_ID),",
+				"     TOTALSALES = sum(SALES)) ~> aggregate"
 			]
 		}
 	}
