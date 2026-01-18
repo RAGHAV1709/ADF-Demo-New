@@ -12,7 +12,11 @@
 					"name": "sourceSales"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "sink"
+				}
+			],
 			"transformations": [
 				{
 					"name": "filter"
@@ -40,7 +44,11 @@
 				"sourceSales filter(SALES>=2000) ~> filter",
 				"filter aggregate(groupBy(YEAR_ID,",
 				"          MONTH_ID),",
-				"     TOTALSALES = sum(SALES)) ~> aggregate"
+				"     TOTALSALES = sum(SALES)) ~> aggregate",
+				"aggregate sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink"
 			]
 		}
 	}
